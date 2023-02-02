@@ -40,16 +40,8 @@ if [[ $os = 'ubuntu' ]]; then
     sudo apt install plasma-discover-backend-flatpak -y
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-    # confirando temas
-    flatpak install org.gtk.Gtk3theme.Breeze
-    sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
-
-
-    echo "#===================#"
-    echo "Instalando apps flatpak"
-    echo "#===================#"
-    # firefox github-desktop telegram flatseal steam
-    flatpak install -y flathub org.mozilla.firefox io.github.shiftey.Desktop org.telegram.desktop com.github.tchx84.Flatseal com.valvesoftware.Steam com.github.libresprite.LibreSprite
+    # instalando firefox flatpak
+    flatpak install -y flathub org.mozilla.firefox
 
     echo "#===================#"
     echo "Instalando icones"
@@ -82,18 +74,25 @@ elif [[ $os = 'fedora' ]]; then
     echo "#===================#"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-     # confirando temas 
-    flatpak install org.gtk.Gtk3theme.Breeze
-    sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
-
-    # Instalando apps
-    flatpak install -y flathub org.mozilla.firefox io.github.shiftey.Desktop org.telegram.desktop com.github.tchx84.Flatseal com.valvesoftware.Steam com.github.libresprite.LibreSprite
-
     echo "#===================#"
     echo "Instalando outros apps"
     echo "#===================#"
     sudo dnf install neofetch intel-gpu-tools htop gnome-tweak-tool scrcpy papirus-icon-theme -y
 fi
+
+echo "#===================#"
+echo "Instalando apps flatpak"
+echo "#===================#"
+# firefox github-desktop telegram flatseal steam
+flatpak install -y flathub io.github.shiftey.Desktop org.telegram.desktop com.github.tchx84.Flatseal com.valvesoftware.Steam com.github.libresprite.LibreSprite
+
+echo "#===================#"
+echo "Configurando tema dos apps flatpak"
+echo "#===================#"
+# confirando temas 
+flatpak install org.gtk.Gtk3theme.Breeze
+sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
+
 
 echo "#===================#"
 echo "Reiniciando"
