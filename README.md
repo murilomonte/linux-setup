@@ -1,5 +1,5 @@
 # linux-setup
-Um simples script para fazer o setup inicial em instalações do Fedora KDE e Kubuntu
+Um simples script para fazer o setup inicial em instalações do Fedora e Kubuntu
 
 ## Atenção
 1 - Esse setup foi feito para meu uso pessoal e poderá não servir para você
