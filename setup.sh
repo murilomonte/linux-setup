@@ -99,7 +99,14 @@ elif [[ $os = 'fedora' ]]; then
     
     sudo dnf check-update
     sudo dnf install neofetch intel-gpu-tools htop papirus-icon-theme steam kdenlive obs-studio telegram-desktop github-desktop code btop -y
-	
+
+    echo "#===================#"
+    echo "Configurando codecs necessários"
+    echo "#===================#"
+	sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+    sudo dnf install lame\* --exclude=lame-devel
+    sudo dnf group upgrade --with-optional Multimedia
+
     if [[ $variant = 'workstation' ]]; then
         echo ""
         echo "#===================#"
@@ -142,7 +149,7 @@ echo ""
 echo "#===================#"
 echo "Instalando apps flatpak"
 echo "#===================#"
-flatpak install flathub com.github.tchx84.Flatseal com.icons8.Lunacy io.bassi.Amberol com.mattjakeman.ExtensionManager -y
+flatpak install flathub com.github.tchx84.Flatseal io.bassi.Amberol com.mattjakeman.ExtensionManager -y
 
 echo ""
 echo "#===================#"
