@@ -112,7 +112,9 @@ elif [[ $os = 'fedora' ]]; then
         echo "#===================#"
         echo "Instalando outros apps (workstation)"
         echo "#===================#"
-        sudo dnf install gnome-tweak-tool
+        sudo dnf copr enable dusansimic/themes
+        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager
+        sudo dnf install gnome-tweak-tool morewaita-icon-theme
 
         echo ""
         echo "#===================#"
@@ -149,7 +151,7 @@ echo ""
 echo "#===================#"
 echo "Instalando apps flatpak"
 echo "#===================#"
-flatpak install flathub com.github.tchx84.Flatseal io.bassi.Amberol com.mattjakeman.ExtensionManager -y
+flatpak install flathub com.github.tchx84.Flatseal -y
 
 echo ""
 echo "#===================#"
