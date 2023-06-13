@@ -98,7 +98,7 @@ elif [[ $os = 'fedora' ]]; then
     sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
     
     sudo dnf check-update
-    sudo dnf install neofetch intel-gpu-tools htop papirus-icon-theme steam kdenlive obs-studio telegram-desktop github-desktop code btop -y
+    sudo dnf install neofetch intel-gpu-tools htop papirus-icon-theme steam kdenlive obs-studio telegram-desktop discord github-desktop code btop -y
 
     echo "#===================#"
     echo "Configurando codecs necessários"
@@ -113,16 +113,14 @@ elif [[ $os = 'fedora' ]]; then
         echo "Instalando outros apps (workstation)"
         echo "#===================#"
         sudo dnf copr enable dusansimic/themes
-        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager
-        sudo dnf install gnome-tweak-tool morewaita-icon-theme
+        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager -y
+        sudo dnf install gnome-tweak-tool morewaita-icon-theme -y
 
         echo ""
         echo "#===================#"
         echo "Configurando tema dos apps flatpak (workstation)"
         echo "#===================#"
-        # habilitando e instalando o repositório do tema
-        sudo dnf copr enable nickavem/adw-gtk3
-        sudo dnf install adw-gtk3
+        sudo dnf install adw-gtk3-theme -y
         
         sudo flatpak override --filesystem=$HOME/.themes
         sudo flatpak override --filesystem=$HOME/.icons
@@ -130,6 +128,9 @@ elif [[ $os = 'fedora' ]]; then
         sudo flatpak override --filesystem=/usr/share/icons
         sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
         sudo flatpak override --env=ICON_THEME=adw-gtk3-dark
+        
+        # Configurando o tema de apps nativos
+        gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     else 
         echo ""
         echo "#===================#"
@@ -157,4 +158,3 @@ echo ""
 echo "#===================#"
 echo "Agora é só reiniciar!"
 echo "#===================#"
-
