@@ -113,14 +113,15 @@ elif [[ $os = 'fedora' ]]; then
         echo "Instalando outros apps (workstation)"
         echo "#===================#"
         sudo dnf copr enable dusansimic/themes
-        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager -y
-        sudo dnf install gnome-tweak-tool morewaita-icon-theme -y
+        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager org.nickvision.tubeconverter de.haeckerfelix.Fragments -y
+        sudo dnf install gnome-tweak-tool morewaita-icon-theme file-roller -y
 
         echo ""
         echo "#===================#"
         echo "Configurando tema dos apps flatpak (workstation)"
         echo "#===================#"
         sudo dnf install adw-gtk3-theme -y
+        flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
         
         sudo flatpak override --filesystem=$HOME/.themes
         sudo flatpak override --filesystem=$HOME/.icons
@@ -152,7 +153,7 @@ echo ""
 echo "#===================#"
 echo "Instalando apps flatpak"
 echo "#===================#"
-flatpak install flathub com.github.tchx84.Flatseal -y
+flatpak install flathub com.github.tchx84.Flatseal md.obsidian.Obsidian -y
 
 echo ""
 echo "#===================#"
