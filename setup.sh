@@ -113,7 +113,7 @@ elif [[ $os = 'fedora' ]]; then
         echo "Instalando outros apps (workstation)"
         echo "#===================#"
         sudo dnf copr enable dusansimic/themes
-        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager org.nickvision.tubeconverter de.haeckerfelix.Fragments -y
+        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager org.nickvision.tubeconverter de.haeckerfelix.Fragments com.github.finefindus.eyedropper -y
         sudo dnf install gnome-tweak-tool morewaita-icon-theme file-roller -y
 
         echo ""
