@@ -16,8 +16,8 @@ if [[ $os = 'fedora' ]]; then
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-    echo -e "${color}// -- Configurando video decode vaapi -- //${nocolor}"
-    sudo dnf install ffmpeg libva-utils intel-media-driver --allowerasing -y
+    echo -e "${color}// -- Configurando aceleração de hardware via gpu -- //${nocolor}"
+    sudo dnf install ffmpeg-free libavcodec-freeworld libva-utils intel-media-driver --allowerasing -y
 
     echo -e "${color}// -- Instalando apps (dnf) -- //${nocolor}"
     # configurando repositório do github-desktop
