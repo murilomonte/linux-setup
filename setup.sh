@@ -16,8 +16,12 @@ if [[ $os = 'fedora' ]]; then
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-    echo -e "${color}// -- Configurando aceleração de hardware via gpu -- //${nocolor}"
-    sudo dnf install ffmpeg-free libavcodec-freeworld libva-utils intel-media-driver --allowerasing -y
+    echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
+    sudo dnf install \
+    ffmpeg-free \
+    libavcodec-freeworld \
+    libva-utils \
+    intel-media-driver --allowerasing -y
 
     echo -e "${color}// -- Instalando apps (dnf) -- //${nocolor}"
     # configurando repositório do github-desktop
@@ -29,10 +33,25 @@ if [[ $os = 'fedora' ]]; then
     sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
     
     sudo dnf check-update
-    sudo dnf install neofetch intel-gpu-tools htop github-desktop code -y
+    sudo dnf install \
+    neofetch \
+    intel-gpu-tools \
+    htop \
+    github-desktop \
+    code -y
     
     echo -e "${color}// -- Instalando apps flatpak -- //${nocolor}"
-    flatpak install flathub com.github.tchx84.Flatseal md.obsidian.Obsidian com.discordapp.Discord com.valvesoftware.Steam org.telegram.desktop org.kde.kdenlive com.obsproject.Studio -y
+    flatpak install flathub \
+    com.github.tchx84.Flatseal \
+    md.obsidian.Obsidian \
+    com.discordapp.Discord \
+    com.valvesoftware.Steam \
+    org.telegram.desktop \
+    org.kde.kdenlive \
+    com.heroicgameslauncher.hgl \
+    io.itch.itch \
+    
+    com.obsproject.Studio -y
 
     echo -e "${color}// -- Configurando codecs necessários -- //${nocolor}"
 	sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
@@ -42,12 +61,38 @@ if [[ $os = 'fedora' ]]; then
     if [[ $variant = 'workstation' ]]; then
         echo -e "${color}// -- Instalando outros apps (workstation) -- //${nocolor}"
         sudo dnf copr enable dusansimic/themes
-        flatpak install io.bassi.Amberol com.mattjakeman.ExtensionManager org.nickvision.tubeconverter de.haeckerfelix.Fragments com.github.finefindus.eyedropper hu.kramo.Cartridges -y
-        sudo dnf install gnome-tweak-tool morewaita-icon-theme file-roller -y
+
+        # dnf
+        sudo dnf install \
+        gnome-tweak-tool \
+        morewaita-icon-theme \
+        file-roller -y
+
+        # flatpak
+        flatpak install \
+        io.bassi.Amberol \
+        com.mattjakeman.ExtensionManager \
+        org.nickvision.tubeconverter \
+        de.haeckerfelix.Fragments \
+        com.github.finefindus.eyedropper \
+        com.raggesilver.BlackBox \
+        com.usebottles.bottles \
+        com.belmoussaoui.Decoder \
+        app.drey.Dialect \
+        org.gnome.design.Contrast \
+        com.github.neithern.g4music \
+        io.github.nate_xyz.Paleta \
+        org.gnome.Quadrapassel \
+        it.mijorus.smile \
+        org.gnome.gitlab.YaLTeR.VideoTrimmer \
+        app.drey.Warp \
+        hu.kramo.Cartridges -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
         sudo dnf install adw-gtk3-theme -y
-        flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
+
+        flatpak install org.gtk.Gtk3theme.adw-gtk3 \
+        org.gtk.Gtk3theme.adw-gtk3-dark -y
         
         sudo flatpak override --filesystem=$HOME/.themes
         sudo flatpak override --filesystem=$HOME/.icons
@@ -60,15 +105,39 @@ if [[ $os = 'fedora' ]]; then
         gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     else 
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
-        sudo dnf remove akregator kamoso mediawriter kmag kgpg qt5-qdbusviewer kcharselect kcolorchooser dragon kmines kmahjongg kpat kruler kmousetool kmouth kolourpaint konversation krdc kfind kaddressbook kmail kontact korganizer ktnef kf5-akonadi-* dnfdragora -y
+        sudo dnf remove \
+        akregator \
+        kamoso \
+        mediawriter \
+        kmag \
+        kgpg \
+        qt5-qdbusviewer \
+        kcharselect kcolorchooser \
+        dragon \
+        kmines \
+        kmahjongg \
+        kpat \
+        kruler \
+        kmousetool \
+        kmouth \
+        kolourpaint \
+        konversation \
+        krdc \
+        kfind \
+        kaddressbook \
+        kmail \
+        kontact \
+        korganizer \
+        ktnef \
+        kf5-akonadi-* \
+        dnfdragora -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (kde spin) -- //${nocolor}"
         flatpak install org.gtk.Gtk3theme.Breeze -y
         sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
     fi
-
     echo -e "${color}// -- Agora é só reiniciar! -- //${nocolor}"
 else
-    echo "Distro não suportada :("
+    echo "[Erro] Somente Fedora é suportado :(" 
 fi
 
