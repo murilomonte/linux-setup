@@ -80,7 +80,6 @@ if [[ $os = 'fedora' ]]; then
         com.belmoussaoui.Decoder \
         app.drey.Dialect \
         org.gnome.design.Contrast \
-        com.github.neithern.g4music \
         io.github.nate_xyz.Paleta \
         org.gnome.Quadrapassel \
         it.mijorus.smile \
