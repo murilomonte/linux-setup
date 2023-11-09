@@ -130,6 +130,16 @@ if [[ $os = 'fedora' ]]; then
         org.gnome.SoundRecorder \
         io.github.mpobaschnig.Vaults \
         it.mijorus.smile \
+        io.github.celluloid_player.Celluloid \
+        page.codeberg.Imaginer.Imaginer \
+        io.gitlab.theevilskeleton.Upscaler \
+        io.github.seadve.Kooha \
+        io.mrarm.mcpelauncher \
+        io.github.nate_xyz.Paleta \
+        io.github.flattool.Warehouse \
+        org.gnome.Epiphany \
+        org.gnome.SoundRecorder \
+        io.gitlab.adhami3310.Footage \
         hu.kramo.Cartridges -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
