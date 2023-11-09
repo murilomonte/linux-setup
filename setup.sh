@@ -143,20 +143,18 @@ if [[ $os = 'fedora' ]]; then
         hu.kramo.Cartridges -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
-        sudo dnf install adw-gtk3-theme -y
-
-        flatpak install org.gtk.Gtk3theme.adw-gtk3 \
-        org.gtk.Gtk3theme.adw-gtk3-dark -y
+        # sudo dnf install adw-gtk3-theme -y
+        # flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
         
         sudo flatpak override --filesystem=$HOME/.themes
         sudo flatpak override --filesystem=$HOME/.icons
         sudo flatpak override --filesystem=/usr/share/themes
         sudo flatpak override --filesystem=/usr/share/icons
-        sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
-        sudo flatpak override --env=ICON_THEME=adw-gtk3-dark
+        # sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
+        # sudo flatpak override --env=ICON_THEME=adw-gtk3-dark
         
         # Configurando o tema de apps nativos
-        gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+        # gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     else 
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
         sudo dnf remove \
