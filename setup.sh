@@ -53,13 +53,13 @@ if [[ $os = 'fedora' ]]; then
 
     # Verificar se o modelo do notebook e da CPU atende aos requisitos
     if [[ "$model" == *"$modelo_desejado"* && "$cpu_model" == *"$modelo_cpu_desejado"* ]]; then
-        echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
-        sudo dnf install \
-        ffmpeg-free \
-        libavcodec-freeworld \
-        libva-utils \
-        intel-media-driver \
-        --allowerasing -y
+        # echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
+        # sudo dnf install \
+        # ffmpeg-free \
+        # libavcodec-freeworld \
+        # libva-utils \
+        # intel-media-driver \
+        # --allowerasing -y
     else
         echo -e "${color}// -- Pulando etapa de configuração de aceleração de vídeo via gpu -- //${nocolor}"
     fi
@@ -84,7 +84,6 @@ if [[ $os = 'fedora' ]]; then
     github-desktop \
     android-tools \
     scrcpy \
-
     code -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
@@ -99,7 +98,16 @@ if [[ $os = 'fedora' ]]; then
     org.kde.kdenlive \
     com.heroicgameslauncher.hgl \
     io.itch.itch \
-    com.obsproject.Studio -y
+    com.obsproject.Studio \
+    io.bassi.Amberol \
+    org.nickvision.tubeconverter \
+    org.gnome.design.Contrast \
+    io.github.nate_xyz.Paleta \
+    org.gnome.Quadrapassel \
+    io.gitlab.theevilskeleton.Upscaler \
+    io.mrarm.mcpelauncher \
+    io.github.flattool.Warehouse \
+    hu.kramo.Cartridges -y
 
     echo -e "${color}// -- Configurando codecs necessários -- //${nocolor}"
     sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
@@ -118,35 +126,19 @@ if [[ $os = 'fedora' ]]; then
 
         # flatpak
         flatpak install \
-        io.bassi.Amberol \
         com.mattjakeman.ExtensionManager \
-        org.nickvision.tubeconverter \
         de.haeckerfelix.Fragments \
         com.github.finefindus.eyedropper \
         com.raggesilver.BlackBox \
-        com.usebottles.bottles \
-        com.belmoussaoui.Decoder \
-        app.drey.Dialect \
-        org.gnome.design.Contrast \
-        io.github.nate_xyz.Paleta \
-        org.gnome.Quadrapassel \
         it.mijorus.smile \
-        org.gnome.gitlab.YaLTeR.VideoTrimmer \
         app.drey.Warp \
         org.gnome.SoundRecorder \
-        io.github.mpobaschnig.Vaults \
         it.mijorus.smile \
         io.github.celluloid_player.Celluloid \
-        page.codeberg.Imaginer.Imaginer \
-        io.gitlab.theevilskeleton.Upscaler \
         io.github.seadve.Kooha \
-        io.mrarm.mcpelauncher \
-        io.github.nate_xyz.Paleta \
-        io.github.flattool.Warehouse \
         org.gnome.Epiphany \
         org.gnome.SoundRecorder \
-        io.gitlab.adhami3310.Footage \
-        hu.kramo.Cartridges -y
+        io.gitlab.adhami3310.Footage -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
         # sudo dnf install adw-gtk3-theme -y
@@ -192,7 +184,7 @@ if [[ $os = 'fedora' ]]; then
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (kde spin) -- //${nocolor}"
         flatpak install org.gtk.Gtk3theme.Breeze -y
-        sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
+        # sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro  --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
     fi
     echo -e "${color}// -- Agora é só reiniciar! -- //${nocolor}"
 else
