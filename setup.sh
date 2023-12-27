@@ -107,6 +107,7 @@ if [[ $os = 'fedora' ]]; then
     io.gitlab.theevilskeleton.Upscaler \
     io.mrarm.mcpelauncher \
     io.github.flattool.Warehouse \
+    org.localsend.localsend_app \
     hu.kramo.Cartridges -y
 
     echo -e "${color}// -- Configurando codecs necessários -- //${nocolor}"
