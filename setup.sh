@@ -53,13 +53,13 @@ if [[ $os = 'fedora' ]]; then
 
     # Verificar se o modelo do notebook e da CPU atende aos requisitos
     if [[ "$model" == *"$modelo_desejado"* && "$cpu_model" == *"$modelo_cpu_desejado"* ]]; then
-        # echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
-        # sudo dnf install \
-        # ffmpeg-free \
-        # libavcodec-freeworld \
-        # libva-utils \
-        # intel-media-driver \
-        # --allowerasing -y
+        echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
+        sudo dnf install \
+        ffmpeg-free \
+        libavcodec-freeworld \
+        libva-utils \
+        ntel-media-driver \
+        --allowerasing -y
     else
         echo -e "${color}// -- Pulando etapa de configuração de aceleração de vídeo via gpu -- //${nocolor}"
     fi
@@ -84,6 +84,8 @@ if [[ $os = 'fedora' ]]; then
     github-desktop \
     android-tools \
     scrcpy \
+    steam \
+    obs-studio \
     code -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
@@ -93,12 +95,10 @@ if [[ $os = 'fedora' ]]; then
     flatpak install flathub \
     com.github.tchx84.Flatseal \
     com.discordapp.Discord \
-    com.valvesoftware.Steam \
     org.telegram.desktop \
     org.kde.kdenlive \
     com.heroicgameslauncher.hgl \
     io.itch.itch \
-    com.obsproject.Studio \
     io.bassi.Amberol \
     org.nickvision.tubeconverter \
     org.gnome.design.Contrast \
