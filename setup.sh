@@ -58,7 +58,7 @@ if [[ $os = 'fedora' ]]; then
         ffmpeg-free \
         libavcodec-freeworld \
         libva-utils \
-        ntel-media-driver \
+        intel-media-driver \
         --allowerasing -y
     else
         echo -e "${color}// -- Pulando etapa de configuração de aceleração de vídeo via gpu -- //${nocolor}"
@@ -84,7 +84,6 @@ if [[ $os = 'fedora' ]]; then
     github-desktop \
     android-tools \
     scrcpy \
-    steam \
     obs-studio \
     code -y
     
@@ -95,6 +94,7 @@ if [[ $os = 'fedora' ]]; then
     flatpak install flathub \
     com.github.tchx84.Flatseal \
     com.discordapp.Discord \
+    com.valvesoftware.Steam \
     org.telegram.desktop \
     org.kde.kdenlive \
     com.heroicgameslauncher.hgl \
