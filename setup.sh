@@ -110,6 +110,11 @@ if [[ $os = 'fedora' ]]; then
     org.localsend.localsend_app \
     hu.kramo.Cartridges -y
 
+    sudo flatpak override --filesystem=$HOME/.themes
+    sudo flatpak override --filesystem=$HOME/.icons
+    sudo flatpak override --filesystem=/usr/share/themes
+    sudo flatpak override --filesystem=/usr/share/icons
+
     echo -e "${color}// -- Configurando codecs necessários -- //${nocolor}"
     sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
     sudo dnf install lame\* --exclude=lame-devel
@@ -131,10 +136,7 @@ if [[ $os = 'fedora' ]]; then
         de.haeckerfelix.Fragments \
         com.github.finefindus.eyedropper \
         com.raggesilver.BlackBox \
-        it.mijorus.smile \
-        app.drey.Warp \
         org.gnome.SoundRecorder \
-        it.mijorus.smile \
         io.github.celluloid_player.Celluloid \
         io.github.seadve.Kooha \
         org.gnome.Epiphany \
@@ -144,11 +146,7 @@ if [[ $os = 'fedora' ]]; then
         echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
         # sudo dnf install adw-gtk3-theme -y
         # flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
-        
-        sudo flatpak override --filesystem=$HOME/.themes
-        sudo flatpak override --filesystem=$HOME/.icons
-        sudo flatpak override --filesystem=/usr/share/themes
-        sudo flatpak override --filesystem=/usr/share/icons
+
         # sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
         # sudo flatpak override --env=ICON_THEME=adw-gtk3-dark
         
