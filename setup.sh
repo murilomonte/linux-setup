@@ -108,6 +108,7 @@ if [[ $os = 'fedora' ]]; then
     io.mrarm.mcpelauncher \
     io.github.flattool.Warehouse \
     org.localsend.localsend_app \
+    com.spotify.Client \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
