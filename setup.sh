@@ -6,44 +6,6 @@ variant=$VARIANT_ID
 color='\033[33;45;1m'
 nocolor='\033[0m'
 
-# > Atenção <
-# Esse algorítmo que identifica o processador e o modelo do pc feito com auxilio do gpt pois sei bem pouco de bash.
-# Mesmo sendo simples e não tendo muito esforço, aprendi algumas coisas com isso. Então... Talvez seja esse o futuro?
-# De fato eu não sei, mas espero que esse script não exploda meu pc :C 
-
-# Função para obter informações sobre a CPU
-get_cpu_model() {
-    lscpu | grep -E "Model name|Nome do modelo" | awk -F: '{print $2}' | xargs
-    # > Me explique o que cada item da linha 7 faz
-    # 1 - $(...): Isso é chamado de substituição de comando. Ele executa o comando dentro dos parênteses e substitui 
-    # essa expressão pelo resultado do comando.
-    # 2 - echo "$system_info": Isso imprime a variável system_info (que contém as informações do sistema obtidas pelo dmidecode).
-    # 3 - | (pipe): Isso redireciona a saída do comando anterior para a entrada do próximo comando.
-    # 4 - grep "Product Name": Isso filtra as linhas que contêm a string "Product Name". Ou seja, ele pega apenas as linhas 
-    # que têm informações sobre o nome do produto.
-    # 5 - awk -F: '{print $2}': O awk é uma ferramenta de processamento de texto. O -F: especifica que o delimitador (o caractere 
-    # usado para dividir os campos) é ":". O comando {print $2} extrai e imprime o segundo campo da linha, que é a parte após o ":".
-    # Isso pega o valor real do "Product Name".
-    # 6 - xargs: Isso é usado para remover espaços em branco extras e ajustar a formatação. Ele pega a saída do awk e remove espaços extras.
-}
-
-# Função para obter informações sobre o sistema usando dmidecode
-get_system_info() {
-    sudo dmidecode -t system | grep -E "Product Name|Nome do produto" | awk -F: '{print $2}' | xargs
-}
-
-# Obter informações sobre a CPU e o sistema
-cpu_model=$(get_cpu_model)
-model=$(get_system_info)
-
-# (debug) Exibir informações sobre a CPU e o notebook
-# echo "Modelo da CPU identificado: $cpu_model"
-# echo "Nome do produto identificado: $model"
-
-# Modelo desejado
-modelo_desejado="550XDA"
-modelo_cpu_desejado="Intel(R) Celeron(R) 6305 @ 1.80GHz"
-
 if [[ $os = 'fedora' ]]; then
     echo -e "${color}// -- Atualizando sistema -- //${nocolor}"
     sudo dnf update -y
@@ -51,18 +13,13 @@ if [[ $os = 'fedora' ]]; then
     echo -e "${color}// -- Configurando rpm fusion -- //${nocolor}"
     sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 
-    # Verificar se o modelo do notebook e da CPU atende aos requisitos
-    if [[ "$model" == *"$modelo_desejado"* && "$cpu_model" == *"$modelo_cpu_desejado"* ]]; then
-        echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
-        sudo dnf install \
-        ffmpeg-free \
-        libavcodec-freeworld \
-        libva-utils \
-        intel-media-driver \
-        --allowerasing -y
-    else
-        echo -e "${color}// -- Pulando etapa de configuração de aceleração de vídeo via gpu -- //${nocolor}"
-    fi
+    echo -e "${color}// -- Configurando aceleração de video via gpu -- //${nocolor}"
+    sudo dnf install \
+    ffmpeg-free \
+    libavcodec-freeworld \
+    libva-utils \
+    intel-media-driver \
+    --allowerasing -y
     
     echo -e "${color}// -- Instalando apps (dnf) -- //${nocolor}"
     # configurando repositório do github-desktop
