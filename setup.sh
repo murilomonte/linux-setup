@@ -42,6 +42,7 @@ if [[ $os = 'fedora' ]]; then
     android-tools \
     scrcpy \
     obs-studio \
+    wine-core \
     code -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
@@ -64,8 +65,8 @@ if [[ $os = 'fedora' ]]; then
     io.gitlab.theevilskeleton.Upscaler \
     io.mrarm.mcpelauncher \
     io.github.flattool.Warehouse \
-    org.localsend.localsend_app \
     com.spotify.Client \
+    net.lutris.Lutris \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
