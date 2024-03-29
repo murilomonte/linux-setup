@@ -41,7 +41,6 @@ if [[ $os = 'fedora' ]]; then
     github-desktop \
     android-tools \
     scrcpy \
-    obs-studio \
     wine-core \
     code -y
     
@@ -51,22 +50,20 @@ if [[ $os = 'fedora' ]]; then
     echo -e "${color}// -- Instalando apps flatpak -- //${nocolor}"
     flatpak install flathub \
     com.github.tchx84.Flatseal \
-    com.discordapp.Discord \
     com.valvesoftware.Steam \
     org.telegram.desktop \
     org.kde.kdenlive \
     com.heroicgameslauncher.hgl \
     io.itch.itch \
-    io.bassi.Amberol \
     org.nickvision.tubeconverter \
     org.gnome.design.Contrast \
     io.github.nate_xyz.Paleta \
     org.gnome.Quadrapassel \
     io.gitlab.theevilskeleton.Upscaler \
     io.mrarm.mcpelauncher \
-    io.github.flattool.Warehouse \
     com.spotify.Client \
     net.lutris.Lutris \
+    com.obsproject.Studio \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -75,8 +72,8 @@ if [[ $os = 'fedora' ]]; then
     sudo flatpak override --filesystem=/usr/share/icons
 
     echo -e "${color}// -- Configurando codecs necessários -- //${nocolor}"
-    sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-    sudo dnf install lame\* --exclude=lame-devel
+    sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
+    sudo dnf install lame\* --exclude=lame-devel -y
     sudo dnf group upgrade --with-optional Multimedia
 
     if [[ $variant = 'workstation' ]]; then
@@ -100,6 +97,7 @@ if [[ $os = 'fedora' ]]; then
         io.github.seadve.Kooha \
         org.gnome.Epiphany \
         org.gnome.SoundRecorder \
+        io.bassi.Amberol \
         io.gitlab.adhami3310.Footage -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
@@ -115,7 +113,6 @@ if [[ $os = 'fedora' ]]; then
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
         sudo dnf remove \
         akregator \
-        kamoso \
         mediawriter \
         kmag \
         kgpg \
@@ -143,6 +140,11 @@ if [[ $os = 'fedora' ]]; then
         echo -e "${color}// -- Configurando tema dos apps flatpak (kde spin) -- //${nocolor}"
         flatpak install org.gtk.Gtk3theme.Breeze -y
         # sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro  --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
+
+        # flatpak
+        flatpak install \
+        org.kde.ktorrent \
+        org.videolan.VLC -y
     fi
     echo -e "${color}// -- Agora é só reiniciar! -- //${nocolor}"
 else
