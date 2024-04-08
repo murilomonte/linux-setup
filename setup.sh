@@ -42,6 +42,9 @@ if [[ $os = 'fedora' ]]; then
     android-tools \
     scrcpy \
     wine-core \
+    libheif-freeworld \
+    blueman \
+    ibm-plex-mono \
     code -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
