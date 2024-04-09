@@ -33,6 +33,8 @@ if [[ $os = 'fedora' ]]; then
     # Configurando copr do scrcpy
     sudo dnf copr enable zeno/scrcpy -y
 
+    sudo dnf remove firefox -y
+
     sudo dnf check-update
     sudo dnf install \
     neofetch \
@@ -67,6 +69,8 @@ if [[ $os = 'fedora' ]]; then
     com.spotify.Client \
     net.lutris.Lutris \
     com.obsproject.Studio \
+    com.github.xournalpp.xournalpp \
+    org.mozilla.firefox \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -87,10 +91,13 @@ if [[ $os = 'fedora' ]]; then
         sudo dnf install \
         gnome-tweak-tool \
         morewaita-icon-theme \
+        nautilus-python \
+        nautilus-extensions \
+        adw-gtk3-theme \
         file-roller -y
 
         # flatpak
-        flatpak install \
+        flatpak install flathub \
         com.mattjakeman.ExtensionManager \
         de.haeckerfelix.Fragments \
         com.github.finefindus.eyedropper \
