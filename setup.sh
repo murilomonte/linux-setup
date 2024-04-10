@@ -33,8 +33,6 @@ if [[ $os = 'fedora' ]]; then
     # Configurando copr do scrcpy
     sudo dnf copr enable zeno/scrcpy -y
 
-    sudo dnf remove firefox -y
-
     sudo dnf check-update
     sudo dnf install \
     neofetch \
@@ -46,7 +44,7 @@ if [[ $os = 'fedora' ]]; then
     wine-core \
     libheif-freeworld \
     blueman \
-    ibm-plex-mono \
+    ibm-plex-mono-fonts \
     code -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
@@ -70,7 +68,6 @@ if [[ $os = 'fedora' ]]; then
     net.lutris.Lutris \
     com.obsproject.Studio \
     com.github.xournalpp.xournalpp \
-    org.mozilla.firefox \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -93,7 +90,6 @@ if [[ $os = 'fedora' ]]; then
         morewaita-icon-theme \
         nautilus-python \
         nautilus-extensions \
-        adw-gtk3-theme \
         file-roller -y
 
         # flatpak
@@ -110,7 +106,7 @@ if [[ $os = 'fedora' ]]; then
         io.bassi.Amberol \
         io.gitlab.adhami3310.Footage -y
 
-        echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
+        # echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
         # sudo dnf install adw-gtk3-theme -y
         # flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
 
@@ -148,11 +144,11 @@ if [[ $os = 'fedora' ]]; then
         dnfdragora -y
 
         echo -e "${color}// -- Configurando tema dos apps flatpak (kde spin) -- //${nocolor}"
-        flatpak install org.gtk.Gtk3theme.Breeze -y
+        flatpak install flathub org.gtk.Gtk3theme.Breeze -y
         # sudo flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro  --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
 
         # flatpak
-        flatpak install \
+        flatpak install flathub \
         org.kde.ktorrent \
         org.videolan.VLC -y
     fi
