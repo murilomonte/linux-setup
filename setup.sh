@@ -93,8 +93,11 @@ if [[ $os = 'fedora' ]]; then
         nautilus-extensions \
         file-roller -y
 
+        sudo dnf remove firefox -y
+
         # flatpak
         flatpak install flathub \
+        org.mozilla.firefox \
         com.mattjakeman.ExtensionManager \
         de.haeckerfelix.Fragments \
         com.github.finefindus.eyedropper \
@@ -103,7 +106,6 @@ if [[ $os = 'fedora' ]]; then
         io.github.celluloid_player.Celluloid \
         io.github.seadve.Kooha \
         org.gnome.Epiphany \
-        org.gnome.SoundRecorder \
         io.bassi.Amberol \
         net.nokyan.Resources \
         io.gitlab.adhami3310.Footage -y
