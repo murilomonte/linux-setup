@@ -105,6 +105,7 @@ if [[ $os = 'fedora' ]]; then
         org.gnome.Epiphany \
         org.gnome.SoundRecorder \
         io.bassi.Amberol \
+        net.nokyan.Resources \
         io.gitlab.adhami3310.Footage -y
 
         # echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
