@@ -68,6 +68,7 @@ if [[ $os = 'fedora' ]]; then
     net.lutris.Lutris \
     com.obsproject.Studio \
     com.github.xournalpp.xournalpp \
+    com.google.Chrome \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
