@@ -69,6 +69,7 @@ if [[ $os = 'fedora' ]]; then
     com.obsproject.Studio \
     com.github.xournalpp.xournalpp \
     com.google.Chrome \
+    org.freedesktop.Platform.VulkanLayer.gamescope \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
