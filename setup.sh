@@ -93,6 +93,8 @@ if [[ $os = 'fedora' ]]; then
         morewaita-icon-theme \
         nautilus-python \
         nautilus-extensions \
+        libgtop2-devel \
+        lm_sensors \
         file-roller -y
 
         sudo dnf remove firefox -y
