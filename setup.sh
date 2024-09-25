@@ -125,7 +125,7 @@ if [[ $os = 'fedora' ]]; then
         # Configurando o tema de apps nativos
         # gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 
-        gsettings set org.gnome.desktop.background picture-uri-dark file:///home/lunwi/Imagens/linux-setup/wallpaper/wallpaper02.jpg
+        gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$HOME/linux-setup/wallpaper/wallpaper02.jpg
     else 
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
         sudo dnf remove \
