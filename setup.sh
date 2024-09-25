@@ -70,6 +70,7 @@ if [[ $os = 'fedora' ]]; then
     com.github.xournalpp.xournalpp \
     com.google.Chrome \
     org.freedesktop.Platform.VulkanLayer.gamescope \
+    com.github.libresprite.LibreSprite \
     hu.kramo.Cartridges -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -109,6 +110,9 @@ if [[ $os = 'fedora' ]]; then
         org.gnome.Epiphany \
         io.bassi.Amberol \
         net.nokyan.Resources \
+        org.gnome.Mines \
+        page.kramo.Sly \
+
         io.gitlab.adhami3310.Footage -y
 
         # echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
@@ -120,6 +124,8 @@ if [[ $os = 'fedora' ]]; then
         
         # Configurando o tema de apps nativos
         # gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+
+        gsettings set org.gnome.desktop.background picture-uri-dark file:///home/lunwi/Imagens/linux-setup/wallpaper/wallpaper02.jpg
     else 
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
         sudo dnf remove \
