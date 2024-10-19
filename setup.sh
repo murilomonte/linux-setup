@@ -35,7 +35,7 @@ if [[ $os = 'fedora' ]]; then
 
     sudo dnf check-update
     sudo dnf install \
-    neofetch \
+    screenfetch \
     intel-gpu-tools \
     htop \
     github-desktop \
@@ -45,7 +45,7 @@ if [[ $os = 'fedora' ]]; then
     libheif-freeworld \
     blueman \
     ibm-plex-mono-fonts \
-    code -y
+    code --skip-unavailable -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -114,7 +114,6 @@ if [[ $os = 'fedora' ]]; then
         net.nokyan.Resources \
         org.gnome.Mines \
         page.kramo.Sly \
-
         io.gitlab.adhami3310.Footage -y
 
         # echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
