@@ -45,6 +45,7 @@ if [[ $os = 'fedora' ]]; then
     libheif-freeworld \
     blueman \
     ibm-plex-mono-fonts \
+    earlyoom \
     code --skip-unavailable -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
