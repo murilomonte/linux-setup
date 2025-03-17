@@ -37,6 +37,7 @@ if [[ $os = 'fedora' ]]; then
     sudo dnf install \
     screenfetch \
     intel-gpu-tools \
+    inxi \
     htop \
     github-desktop \
     android-tools \
@@ -54,8 +55,12 @@ if [[ $os = 'fedora' ]]; then
     # Desinstalando libreoffice
     sudo dnf remove libreoffice-*
 
+    # Desinstalando firefox
+    sudo dnf remove firefox -y
+
     echo -e "${color}// -- Instalando apps flatpak -- //${nocolor}"
     flatpak install flathub \
+    org.mozilla.firefox \
     com.github.tchx84.Flatseal \
     com.valvesoftware.Steam \
     org.telegram.desktop \
@@ -80,6 +85,8 @@ if [[ $os = 'fedora' ]]; then
     com.calibre_ebook.calibre \
     org.localsend.localsend_app \
     org.onlyoffice.desktopeditors \
+    com.discordapp.Discord \
+    com.rafaelmardojai.Blanket \
     org.libretro.RetroArch  -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -105,11 +112,8 @@ if [[ $os = 'fedora' ]]; then
         lm_sensors \
         file-roller -y
 
-        sudo dnf remove firefox -y
-
         # flatpak
         flatpak install flathub \
-        org.mozilla.firefox \
         com.mattjakeman.ExtensionManager \
         de.haeckerfelix.Fragments \
         com.github.finefindus.eyedropper \
