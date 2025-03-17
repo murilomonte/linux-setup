@@ -51,6 +51,9 @@ if [[ $os = 'fedora' ]]; then
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+    # Desinstalando libreoffice
+    sudo dnf remove libreoffice-*
+
     echo -e "${color}// -- Instalando apps flatpak -- //${nocolor}"
     flatpak install flathub \
     com.github.tchx84.Flatseal \
@@ -72,7 +75,12 @@ if [[ $os = 'fedora' ]]; then
     com.google.Chrome \
     org.freedesktop.Platform.VulkanLayer.gamescope \
     com.github.libresprite.LibreSprite \
-    hu.kramo.Cartridges -y
+    hu.kramo.Cartridges \
+    page.kramo.Sly \
+    com.calibre_ebook.calibre \
+    org.localsend.localsend_app \
+    org.onlyoffice.desktopeditors \
+    org.libretro.RetroArch  -y
 
     sudo flatpak override --filesystem=$HOME/.themes
     sudo flatpak override --filesystem=$HOME/.icons
@@ -90,7 +98,6 @@ if [[ $os = 'fedora' ]]; then
 
         # dnf
         sudo dnf install \
-        gnome-tweak-tool \
         morewaita-icon-theme \
         nautilus-python \
         nautilus-extensions \
@@ -106,16 +113,13 @@ if [[ $os = 'fedora' ]]; then
         com.mattjakeman.ExtensionManager \
         de.haeckerfelix.Fragments \
         com.github.finefindus.eyedropper \
-        com.raggesilver.BlackBox \
         org.gnome.SoundRecorder \
         io.github.celluloid_player.Celluloid \
-        io.github.seadve.Kooha \
         org.gnome.Epiphany \
         io.bassi.Amberol \
         net.nokyan.Resources \
         org.gnome.Mines \
-        page.kramo.Sly \
-        io.gitlab.adhami3310.Footage -y
+        page.tesk.Refine -y
 
         # echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
         # sudo dnf install adw-gtk3-theme -y
@@ -127,7 +131,7 @@ if [[ $os = 'fedora' ]]; then
         # Configurando o tema de apps nativos
         # gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 
-        gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$HOME/linux-setup/wallpaper/wallpaper02.jpg
+        # gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$HOME/linux-setup/wallpaper/wallpaper02.jpg
     else 
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
         sudo dnf remove \
