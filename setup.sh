@@ -34,6 +34,7 @@ if [[ $os = 'fedora' ]]; then
     sudo dnf copr enable zeno/scrcpy -y
 
     sudo dnf check-update
+
     sudo dnf install \
     screenfetch \
     intel-gpu-tools \
@@ -47,6 +48,8 @@ if [[ $os = 'fedora' ]]; then
     blueman \
     ibm-plex-mono-fonts \
     earlyoom \
+    libgtop2-devel \
+    lm_sensors \
     code --skip-unavailable -y
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
@@ -82,6 +85,7 @@ if [[ $os = 'fedora' ]]; then
     com.github.libresprite.LibreSprite \
     hu.kramo.Cartridges \
     page.kramo.Sly \
+    org.gnome.Mines \
     com.calibre_ebook.calibre \
     org.localsend.localsend_app \
     org.onlyoffice.desktopeditors \
@@ -99,6 +103,9 @@ if [[ $os = 'fedora' ]]; then
     sudo dnf install lame\* --exclude=lame-devel -y
     sudo dnf group upgrade --with-optional Multimedia
 
+    echo -e "${color}// -- Configurando UV (python) -- //${nocolor}"
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
     if [[ $variant = 'workstation' ]]; then
         echo -e "${color}// -- Instalando outros apps (workstation) -- //${nocolor}"
         sudo dnf copr enable dusansimic/themes
@@ -108,8 +115,6 @@ if [[ $os = 'fedora' ]]; then
         morewaita-icon-theme \
         nautilus-python \
         nautilus-extensions \
-        libgtop2-devel \
-        lm_sensors \
         file-roller -y
 
         # flatpak
@@ -122,20 +127,8 @@ if [[ $os = 'fedora' ]]; then
         org.gnome.Epiphany \
         io.bassi.Amberol \
         net.nokyan.Resources \
-        org.gnome.Mines \
         page.tesk.Refine -y
 
-        # echo -e "${color}// -- Configurando tema dos apps flatpak (workstation) -- //${nocolor}"
-        # sudo dnf install adw-gtk3-theme -y
-        # flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
-
-        # sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
-        # sudo flatpak override --env=ICON_THEME=adw-gtk3-dark
-        
-        # Configurando o tema de apps nativos
-        # gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
-
-        # gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$HOME/linux-setup/wallpaper/wallpaper02.jpg
     else 
         echo -e "${color}// -- Debloat :) (kde spin) -- //${nocolor}"
         sudo dnf remove \
@@ -170,7 +163,7 @@ if [[ $os = 'fedora' ]]; then
 
         # flatpak
         flatpak install flathub \
-        org.kde.ktorrent \
+        org.qbittorrent.qBittorrent \
         org.videolan.VLC -y
     fi
     echo -e "${color}// -- Agora é só reiniciar! -- //${nocolor}"
