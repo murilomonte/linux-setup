@@ -51,6 +51,15 @@ if [[ $os = 'fedora' ]]; then
     libgtop2-devel \
     lm_sensors \
     code --skip-unavailable -y
+
+    ## Pacotes para o Flutter
+    sudo dnf isntall \
+    java-21-openjdk \
+    clang \
+    cmake \
+    ninja-build \
+    gtk3-devel \
+    eglinfo -y 
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -93,6 +102,7 @@ if [[ $os = 'fedora' ]]; then
     com.rafaelmardojai.Blanket \
     org.pgadmin.pgadmin4 \
     org.vinegarhq.Sober \
+    com.google.AndroidStudio \
     org.libretro.RetroArch  -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -117,6 +127,7 @@ if [[ $os = 'fedora' ]]; then
         morewaita-icon-theme \
         nautilus-python \
         nautilus-extensions \
+        adw-gtk3-theme \
         file-roller -y
 
         # flatpak
