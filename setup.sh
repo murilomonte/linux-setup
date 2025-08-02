@@ -91,6 +91,8 @@ if [[ $os = 'fedora' ]]; then
     org.onlyoffice.desktopeditors \
     com.discordapp.Discord \
     com.rafaelmardojai.Blanket \
+    org.pgadmin.pgadmin4 \
+    org.vinegarhq.Sober \
     org.libretro.RetroArch  -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -126,7 +128,11 @@ if [[ $os = 'fedora' ]]; then
         io.github.celluloid_player.Celluloid \
         org.gnome.Epiphany \
         io.bassi.Amberol \
+        be.alexandervanhee.gradia \
+        io.github.nozwock.Packet \
         net.nokyan.Resources \
+        org.gnome.Papers \
+        app.drey.KeyRack \
         page.tesk.Refine -y
 
     else 
