@@ -50,16 +50,13 @@ if [[ $os = 'fedora' ]]; then
     earlyoom \
     libgtop2-devel \
     lm_sensors \
-    code --skip-unavailable -y
-
-    ## Pacotes para o Flutter
-    sudo dnf isntall \
+    code \
     java-21-openjdk \
     clang \
     cmake \
     ninja-build \
     gtk3-devel \
-    eglinfo -y 
+    eglinfo --skip-unavailable -y 
     
     echo -e "${color}// -- Adicionando suporte ao flathub -- //${nocolor}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
