@@ -100,6 +100,13 @@ if [[ $os = 'fedora' ]]; then
     org.pgadmin.pgadmin4 \
     org.vinegarhq.Sober \
     com.google.AndroidStudio \
+    io.github.kolunmi.Bazaar \
+    io.beekeeperstudio.Studio \
+    io.github.ciromattia.kcc \
+    com.vysp3r.ProtonPlus \
+    io.github.vikdevelop.SaveDesktop \
+    dev.deedles.Trayscale \
+    app.zen_browser.zen \
     org.libretro.RetroArch  -y
 
     sudo flatpak override --filesystem=$HOME/.themes
@@ -135,12 +142,13 @@ if [[ $os = 'fedora' ]]; then
         org.gnome.SoundRecorder \
         io.github.celluloid_player.Celluloid \
         org.gnome.Epiphany \
-        io.bassi.Amberol \
         be.alexandervanhee.gradia \
         io.github.nozwock.Packet \
-        net.nokyan.Resources \
         org.gnome.Papers \
         app.drey.KeyRack \
+        com.mattjakeman.ExtensionManager \
+        com.github.neithern.g4music \
+        io.missioncenter.MissionCenter \
         page.tesk.Refine -y
 
     else 
