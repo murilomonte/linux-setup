@@ -32,6 +32,7 @@ if [[ $os = 'fedora' ]]; then
         com.github.xournalpp.xournalpp \
         com.google.Chrome \
         org.freedesktop.Platform.VulkanLayer.gamescope \
+        org.freedesktop.Platform.ffmpeg-full \
         com.github.libresprite.LibreSprite \
         hu.kramo.Cartridges \
         page.kramo.Sly \
@@ -65,6 +66,7 @@ if [[ $os = 'fedora' ]]; then
         com.mattjakeman.ExtensionManager \
         com.github.neithern.g4music \
         io.missioncenter.MissionCenter \
+        dev.zed.Zed \
         page.tesk.Refine -y
 
         sudo flatpak override --filesystem=$HOME/.themes
