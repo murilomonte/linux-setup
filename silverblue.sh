@@ -8,66 +8,57 @@ nocolor='\033[0m'
 
 if [[ $os = 'fedora' ]]; then
     if [[ $variant = 'silverblue' ]]; then
-        echo -e "${color}// -- Instalando rpm apps (silverblue) -- //${nocolor}"
-        rpm-ostree install distrobox
-
         echo -e "${color}// -- Instalando apps flatpak (silverblue) -- //${nocolor}"
-        flatpak install flathub \
-        org.mozilla.firefox \
-        com.github.tchx84.Flatseal \
-        com.valvesoftware.Steam \
-        org.telegram.desktop \
-        org.kde.kdenlive \
-        com.heroicgameslauncher.hgl \
-        io.itch.itch \
-        org.nickvision.tubeconverter \
-        org.gnome.design.Contrast \
-        io.github.nate_xyz.Paleta \
-        org.gnome.Quadrapassel \
-        io.gitlab.theevilskeleton.Upscaler \
-        io.mrarm.mcpelauncher \
-        com.spotify.Client \
-        net.lutris.Lutris \
-        com.obsproject.Studio \
-        com.github.xournalpp.xournalpp \
-        com.google.Chrome \
-        org.freedesktop.Platform.VulkanLayer.gamescope \
-        org.freedesktop.Platform.ffmpeg-full \
-        com.github.libresprite.LibreSprite \
-        hu.kramo.Cartridges \
-        page.kramo.Sly \
-        org.gnome.Mines \
-        com.calibre_ebook.calibre \
-        org.localsend.localsend_app \
-        org.onlyoffice.desktopeditors \
-        com.discordapp.Discord \
-        com.rafaelmardojai.Blanket \
-        org.pgadmin.pgadmin4 \
-        org.vinegarhq.Sober \
-        com.google.AndroidStudio \
-        io.github.kolunmi.Bazaar \
-        io.beekeeperstudio.Studio \
-        io.github.ciromattia.kcc \
-        com.vysp3r.ProtonPlus \
-        io.github.vikdevelop.SaveDesktop \
-        dev.deedles.Trayscale \
-        app.zen_browser.zen \
-        org.libretro.RetroArch  \
-        com.mattjakeman.ExtensionManager \
-        de.haeckerfelix.Fragments \
-        com.github.finefindus.eyedropper \
-        org.gnome.SoundRecorder \
-        io.github.celluloid_player.Celluloid \
-        org.gnome.Epiphany \
-        be.alexandervanhee.gradia \
-        io.github.nozwock.Packet \
-        org.gnome.Papers \
-        app.drey.KeyRack \
-        com.mattjakeman.ExtensionManager \
-        com.github.neithern.g4music \
-        io.missioncenter.MissionCenter \
-        dev.zed.Zed \
-        page.tesk.Refine -y
+        flatpak install flathub -y \
+        com.google.AndroidStudio/x86_64/stable  \
+        io.github.kolunmi.Bazaar/x86_64/stable \
+        io.beekeeperstudio.Studio/x86_64/stable \
+        com.rafaelmardojai.Blanket/x86_64/stable \
+        studio.planetpeanut.Bobby/x86_64/stable \
+        org.gnome.Boxes/x86_64/stable \
+        io.github.diegopvlk.Cine/x86_64/stable \
+        org.gnome.design.Contrast/x86_64/stable \
+        io.github.pol_rivero.github-desktop-plus/x86_64/stable \
+        com.discordapp.Discord/x86_64/stable \
+        com.mattjakeman.ExtensionManager/x86_64/stable \
+        com.github.finefindus.eyedropper/x86_64/stable \
+        org.gnome.FileRoller/x86_64/stable \
+        org.mozilla.firefox/x86_64/stable \
+        org.gnome.Firmware/x86_64/stable \
+        com.github.tchx84.Flatseal/x86_64/stable \
+        io.github.tfuxu.floodit/x86_64/stable \
+        de.haeckerfelix.Fragments/x86_64/stable \
+        com.github.neithern.g4music/x86_64/stable \
+        com.google.Chrome/x86_64/stable \
+        be.alexandervanhee.gradia/x86_64/stable \
+        com.heroicgameslauncher.hgl/x86_64/stable \
+        org.kde.kdenlive/x86_64/stable \
+        app.drey.KeyRack/x86_64/stable \
+        org.localsend.localsend_app/x86_64/stable \
+        net.lutris.Lutris/x86_64/stable \
+        org.gnome.Mines/x86_64/stable \
+        io.missioncenter.MissionCenter/x86_64/stable \
+        com.obsproject.Studio/x86_64/stable \
+        org.onlyoffice.desktopeditors/x86_64/stable \
+        io.github.nozwock.Packet/x86_64/stable \
+        org.nickvision.tubeconverter/x86_64/stable \
+        org.pgadmin.pgadmin4/x86_64/stable \
+        io.podman_desktop.PodmanDesktop/x86_64/stable \
+        com.vysp3r.ProtonPlus/x86_64/stable \
+        org.gnome.Quadrapassel/x86_64/stable \
+        page.tesk.Refine/x86_64/stable \
+        io.github.vikdevelop.SaveDesktop/x86_64/stable \
+        org.gnome.SoundRecorder/x86_64/stable \
+        com.spotify.Client/x86_64/stable \
+        com.valvesoftware.Steam/x86_64/stable \
+        org.telegram.desktop/x86_64/stable \
+        dev.deedles.Trayscale/x86_64/stable \
+        io.gitlab.theevilskeleton.Upscaler/x86_64/stable \
+        org.gnome.Epiphany/x86_64/stable \
+        com.github.xournalpp.xournalpp/x86_64/stable \
+        dev.zed.Zed/x86_64/stable \
+        com.ranfdev.DistroShelf/x86_64/stable \
+        io.github.flattool.Warehouse/x86_64/stable
 
         sudo flatpak override --filesystem=$HOME/.themes
         sudo flatpak override --filesystem=$HOME/.icons
